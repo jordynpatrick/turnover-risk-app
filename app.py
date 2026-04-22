@@ -15,7 +15,8 @@ y = np.array([0,0,1,2,2])
 model = LogisticRegression(max_iter=1000)
 model.fit(X,y)
 
-st.title("Turnover Risk Predictor")
+st.title("HR Analytics Turnover Risk Dashboard")
+st.subheader("Machine Learning Model for Employee Attrition Risk Prediction")
 
 job_sat = st.slider("Job Satisfaction",1,5,3)
 workload = st.slider("Workload",1,5,3)
