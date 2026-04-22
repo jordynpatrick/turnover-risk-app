@@ -45,3 +45,9 @@ if st.button("Predict"):
     else:
         st.error("High Turnover Risk")
 
+st.markdown("### Model Interpretation")
+
+st.write("This model uses Logistic Regression, which estimates the relationship between job factors and turnover risk.")
+
+st.write("Higher workload and lower satisfaction generally increase predicted turnover risk.")
+
