@@ -18,6 +18,14 @@ model.fit(X,y)
 st.title("HR Analytics Turnover Risk Dashboard")
 st.subheader("Machine Learning Model for Employee Attrition Risk Prediction")
 
+st.title("HR Analytics Turnover Risk Dashboard")
+st.subheader("AI-powered Employee Attrition Prediction Tool")
+
+st.markdown("""
+### About this tool
+This dashboard uses machine learning to estimate employee turnover risk based on key job attitude variables commonly studied in Industrial-Organizational Psychology.
+""")
+
 job_sat = st.slider("Job Satisfaction",1,5,3)
 workload = st.slider("Workload",1,5,3)
 pay_sat = st.slider("Pay Satisfaction",1,5,3)
