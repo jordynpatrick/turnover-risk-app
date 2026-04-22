@@ -34,23 +34,25 @@ if st.button("Predict"):
 
     st.write("### Risk Breakdown")
 
-    st.write(f"Low Risk Probability: {probs[0]:.2f}")
-    st.write(f"Medium Risk Probability: {probs[1]:.2f}")
-    st.write(f"High Risk Probability: {probs[2]:.2f}")
+    st.write(f"🟢 Low Risk Probability: {probs[0]:.2f}")
+    st.write(f"🟡 Medium Risk Probability: {probs[1]:.2f}")
+    st.write(f"🔴 High Risk Probability: {probs[2]:.2f}")
+
+    st.write("---")
+    st.write("### Prediction")
 
     if pred == 0:
         st.success("Low Turnover Risk")
+        st.write("🟢 Recommendation: Employee is likely to stay. Standard engagement maintenance recommended.")
+
     elif pred == 1:
         st.warning("Medium Turnover Risk")
+        st.write("🟡 Recommendation: Monitor engagement and workload balance to prevent turnover risk escalation.")
+
     else:
         st.error("High Turnover Risk")
-
-if pred == 2:
-    st.write("⚠️ Recommendation: Consider retention interventions (e.g., workload reduction, compensation review).")
-elif pred == 1:
-    st.write("🟡 Recommendation: Monitor employee engagement trends.")
-else:
-    st.write("🟢 Recommendation: Employee likely to stay.")
+        st.write("🔴 Recommendation: Consider retention intervention (e.g., workload reduction, compensation review, or manager check-in).")
+        
 
 st.markdown("### Model Interpretation")
 
