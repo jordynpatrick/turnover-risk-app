@@ -24,12 +24,19 @@ pay_sat = st.slider("Pay Satisfaction",1,5,3)
 tenure = st.slider("Tenure",0.0,15.0,3.0)
 
 if st.button("Predict"):
-    pred = model.predict([[job_sat,workload,pay_sat,tenure]])[0]
+    probs = model.predict_proba([[job_sat, workload, pay_sat, tenure]])[0]
+    pred = np.argmax(probs)
+
+    st.write("### Risk Breakdown")
+
+    st.write(f"Low Risk Probability: {probs[0]:.2f}")
+    st.write(f"Medium Risk Probability: {probs[1]:.2f}")
+    st.write(f"High Risk Probability: {probs[2]:.2f}")
 
     if pred == 0:
-        st.success("Low Risk")
+        st.success("Low Turnover Risk")
     elif pred == 1:
-        st.warning("Medium Risk")
+        st.warning("Medium Turnover Risk")
     else:
-        st.error("High Risk")
+        st.error("High Turnover Risk")
 
