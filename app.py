@@ -45,6 +45,13 @@ if st.button("Predict"):
     else:
         st.error("High Turnover Risk")
 
+if pred == 2:
+    st.write("⚠️ Recommendation: Consider retention interventions (e.g., workload reduction, compensation review).")
+elif pred == 1:
+    st.write("🟡 Recommendation: Monitor employee engagement trends.")
+else:
+    st.write("🟢 Recommendation: Employee likely to stay.")
+
 st.markdown("### Model Interpretation")
 
 st.write("This model uses Logistic Regression, which estimates the relationship between job factors and turnover risk.")
