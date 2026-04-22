@@ -16,9 +16,6 @@ model = LogisticRegression(max_iter=1000)
 model.fit(X,y)
 
 st.title("HR Analytics Turnover Risk Dashboard")
-st.subheader("Machine Learning Model for Employee Attrition Risk Prediction")
-
-st.title("HR Analytics Turnover Risk Dashboard")
 st.subheader("AI-powered Employee Attrition Prediction Tool")
 
 st.markdown("""
