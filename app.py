@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import plotly.graph_objects as go
 from sklearn.linear_model import LogisticRegression
 
 X = np.array([
@@ -35,16 +36,26 @@ if st.button("Predict"):
     st.write("### Risk Breakdown")
 
     st.write(f"🟢 Low Risk Probability: {probs[0]:.2f}")
-    st.write(f"🟡 Medium Risk Probability: {probs[1]:.2f}")
+    st.write(f"🟠 Medium Risk Probability: {probs[1]:.2f}")
     st.write(f"🔴 High Risk Probability: {probs[2]:.2f}")
 
     st.markdown("### Risk Visualization")
 
-    st.bar_chart({
-        "Low Risk": [probs[0]],
-        "Medium Risk": [probs[1]],
-        "High Risk": [probs[2]]
-    })
+    fig = go.Figure(data=[
+        go.Bar(name="Low Risk", x=["Risk"], y=[probs[0]]),
+        go.Bar(name="Medium Risk", x=["Risk"], y=[probs[1]]),
+        go.Bar(name="High Risk", x=["Risk"], y=[probs[2]])
+    ])
+
+    fig.update_layout(
+        barmode='group',
+        yaxis=dict(title="Probability"),
+        template="simple_white"
+    )
+
+    fig.update_traces(marker_color=["#2E86AB", "#F4A261", "#E76F51"])
+
+    st.plotly_chart(fig, use_container_width=True)
 
     st.write("---")
     st.write("### Prediction")
@@ -55,11 +66,11 @@ if st.button("Predict"):
 
     elif pred == 1:
         st.warning("Medium Turnover Risk")
-        st.write("🟡 Recommendation: Monitor engagement and workload balance to prevent turnover risk escalation.")
+        st.write("🟠 Recommendation: Monitor engagement and workload balance to prevent escalation.")
 
     else:
         st.error("High Turnover Risk")
-        st.write("🔴 Recommendation: Consider retention intervention (e.g., workload reduction, compensation review, or manager check-in).")
+        st.write("🔴 Recommendation: Consider retention intervention (workload, compensation, or managerial support review).")
         
 
 st.markdown("### Model Interpretation")
