@@ -38,6 +38,14 @@ if st.button("Predict"):
     st.write(f"🟡 Medium Risk Probability: {probs[1]:.2f}")
     st.write(f"🔴 High Risk Probability: {probs[2]:.2f}")
 
+    st.markdown("### Risk Visualization")
+
+    st.bar_chart({
+        "Low Risk": [probs[0]],
+        "Medium Risk": [probs[1]],
+        "High Risk": [probs[2]]
+    })
+
     st.write("---")
     st.write("### Prediction")
 
